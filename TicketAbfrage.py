@@ -1,3 +1,9 @@
+
+##################################################
+#            for more information see            #
+#  https://github.com/ich95/WLAN-Autoanmeldung/  #
+##################################################
+
 import requests
 from getpass import getpass
 import re
@@ -11,7 +17,7 @@ run = 1
 count = 0
 
 while True:
-    print(run, end = " ")
+    print(run, end=" ")
     run += 1
     # request an die Login Seite, um Login Code (ta_id) zu bekommen
     url = "https://wlan-login.oszimt.de/logon/cgi/index.cgi"
@@ -22,10 +28,10 @@ while True:
     # print(x)  # Ausgabe des Arrays von re.findall (Debug)
     if(len(x) == 0):  # Wenn Array leer -> Ticket noch gültig -> muss nicht neu anmelden
         used = re.findall('\d+,\d+', req.text)
-        if len(used)==0:
+        if len(used) == 0:
             pass
         else:
-            print("Verbraucht: %s mb" %(used[0]))
+            print("Verbraucht: %s mb" % (used[0]))
         time.sleep(delay)  # Zeit, die zwischen Abfragen liegen soll
         count = 0  # count wieder auf null setzen, da sonst nach 3 reconnects sonst Skript abbricht
         continue
