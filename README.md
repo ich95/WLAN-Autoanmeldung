@@ -2,10 +2,9 @@
 OSZIMT reconnect bei aufgebrauchtem Ticket
 
 Das Skript fragt in regelmäßigen Abständen den Server nach dem Ticket-Status ab.
-Wenn das Ticket abgelaufen ist, dann wird auf die Login-Seite weitergeleitet, in der zwei 32-Bit lange Zeichenketten eingebettet sind, die zur Anmeldung benötigt werden. 
-Mit diesen Daten wird ein Request an den Server geschickt, der dann die Anmeldung im Netzwerk verifiziert.
-
-Wenn das Ticket noch gültig ist, enthält die Seite nicht die Zeichenkette -> das Ticket ist noch valide.
+Wenn das Ticket noch gültig ist (weniger als 1000 mb verbraucht), gibt es kein login Fenster, sondern lediglich Ticketinformationen. Sollte das Ticket aufgebraucht sein, wird das Login-Fenster vom Server geliefert.
+Das Formular enthält eine ID in Hex-Code. Diese wird  mittels RegEx ausgelesen und dann in einem Request mit Nutzername und Passwort an die Action-Seite des Formulars weitergegeben. Danach sollte der Login erfolgen.
+Sofern Nutzername oder Passwort falsch sein sollten, bricht das Skript automatisch nach dem dritten Loginversuch ab.
 
 # benötigte Module
 requests
