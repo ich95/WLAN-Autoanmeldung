@@ -1,3 +1,9 @@
+
+##################################################
+#            for more information see            #
+#  https://github.com/ich95/WLAN-Autoanmeldung/  #
+##################################################
+
 from tkinter import *
 import requests
 import re
