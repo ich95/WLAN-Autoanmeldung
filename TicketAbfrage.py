@@ -11,16 +11,21 @@ run = 1
 count = 0
 
 while True:
-    print(run)
+    print(run, end = " ")
     run += 1
     # request an die Login Seite, um Login Code (ta_id) zu bekommen
     url = "https://wlan-login.oszimt.de/logon/cgi/index.cgi"
     req = requests.post(url, allow_redirects=False, data={})
     htmlAntwort = req.text  # HTML Antowrt der Seite in Variable speichern
     # ta_id hat 2 32 Bit Hex-Felder, die durch Leerzeichen getrennt sind, " sorgt für genau diesen gesuchten Text ohne andere Werte
-    x = re.findall('\"[\d\D]{32}\s[\d\D]{32}\"', htmlAntwort) 
+    x = re.findall('\"[\d\D]{32}\s[\d\D]{32}\"', htmlAntwort)
     # print(x)  # Ausgabe des Arrays von re.findall (Debug)
     if(len(x) == 0):  # Wenn Array leer -> Ticket noch gültig -> muss nicht neu anmelden
+        used = re.findall('\d+,\d+', req.text)
+        if len(used)==0:
+            pass
+        else:
+            print("Verbraucht: %s mb" %(used[0]))
         time.sleep(delay)  # Zeit, die zwischen Abfragen liegen soll
         count = 0  # count wieder auf null setzen, da sonst nach 3 reconnects sonst Skript abbricht
         continue
