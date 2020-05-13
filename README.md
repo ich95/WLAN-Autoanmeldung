@@ -18,6 +18,3 @@ Sofern Nutzername oder Passwort falsch sein sollten, bricht das Skript automatis
 - re
 
 
-## Eventuelle Features
-- GUI
-
