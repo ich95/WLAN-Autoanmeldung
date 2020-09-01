@@ -11,7 +11,7 @@ import time
 
 name = input("Name: ")
 pwd = getpass()
-delay = 10  # Zeit zwischen abfragen in Sekunden
+delay = 5  # Zeit zwischen abfragen in Sekunden
 
 run = 1
 count = 0
@@ -21,7 +21,7 @@ while True:
     run += 1
     # request an die Login Seite, um Login Code (ta_id) zu bekommen
     url = "https://wlan-login.oszimt.de/logon/cgi/index.cgi"
-    req = requests.post(url, allow_redirects=False, data={})
+    req = requests.post(url, allow_redirects=False, data={}, verify=False)
     htmlAntwort = req.text  # HTML Antowrt der Seite in Variable speichern
     # ta_id hat 2 32 Bit Hex-Felder, die durch Leerzeichen getrennt sind, " sorgt für genau diesen gesuchten Text ohne andere Werte
     x = re.findall('\"[\d\D]{32}\s[\d\D]{32}\"', htmlAntwort)
@@ -47,7 +47,7 @@ while True:
         'pwd': pwd,
         'ta_id': x[0],
         'voucher_logon_btn': True
-    })
+    }, verify=False)
 
     if len(x) != 0:
         count += 1
