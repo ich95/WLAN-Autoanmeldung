@@ -8,6 +8,8 @@ import requests
 from getpass import getpass
 import re
 import time
+import warnings
+warnings.filterwarnings("ignore")
 
 name = input("Name: ")
 pwd = getpass()
