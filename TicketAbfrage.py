@@ -19,7 +19,7 @@ run = 1
 count = 0
 
 while True:
-    print(run, end=" ")
+    print('{:<4}'.format(run), end=" ")
     run += 1
     # request an die Login Seite, um Login Code (ta_id) zu bekommen
     url = "https://wlan-login.oszimt.de/logon/cgi/index.cgi"
