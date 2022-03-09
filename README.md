@@ -1,3 +1,4 @@
+# LEGACY - Projekt bekommt keine Updates mehr, falls sich bei der Anmeldung was ändern sollte
 # WLAN-Autoanmeldung
 OSZIMT reconnect bei aufgebrauchtem Ticket
 
